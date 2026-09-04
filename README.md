@@ -7,7 +7,7 @@ Kits that let vibe coders (Replit / Lovable / Bolt / Flutter) wire PushEngage in
 
 | Path | What it is | Status |
 |---|---|---|
-| `replit-template/` | Complete demo store (static site + node server): official loader snippet, root service worker, subscribe / segment / trigger buttons, MCP README | Code complete — needs publishing as a Replit template (account required) or a public GitHub repo for "Import from GitHub" |
+| `replit-template/` | Complete demo store (static site + node server): official loader snippet, root service worker, subscribe / segment / trigger buttons, MCP README | PUBLIC — import at replit.com/github/NirvanaGuha/pushengage-vibe-kits (template lives in replit-template/) |
 | `flutter-starter/` | `lib/main.dart` + `pubspec.yaml` verified against pushengage_flutter_sdk 0.0.2 source (setAppId, requestNotificationPermission, addSegment, sendTriggerEvent/TriggerCampaign) | Code complete — README covers Firebase/APNs prereqs |
 | `prompts/lovable-prompt.md` | One-prompt demo for Lovable (snippet embedded verbatim so the AI can't improvise) | Ready to publish |
 | `prompts/bolt-prompt.md` | Same for Bolt.new (Vite layout, `public/service-worker.js`) | Ready to publish |
@@ -23,5 +23,5 @@ Kits that let vibe coders (Replit / Lovable / Bolt / Flutter) wire PushEngage in
 
 - UTM convention baked into all links: `utm_source=replit|lovable|bolt|flutter-kit`, `utm_medium=vibe-kit`, `utm_campaign=mcp-launch`.
 - **Open:** per-platform coupon codes (task spec) — needs a billing-side owner to mint them; swap into the READMEs when they exist.
-- **Open:** publish `replit-template/` to Replit (needs the account owner) or push the kit to a public GitHub repo under awesomemotive/ for one-click import.
+- Public repo: https://github.com/NirvanaGuha/pushengage-vibe-kits (transfer to the awesomemotive org when an org admin is available — GitHub redirects survive the move).
 - Cross-links once public: /developers page SDK section, api/ai-agents docs page, launch-kit LP (separate task), WPVibe co-marketing tutorial (separate task).
