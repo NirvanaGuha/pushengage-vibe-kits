@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Demo Store — PushEngage Vibe Kit</title>
+
+  <!-- PushEngage web SDK · replace YOUR_APP_ID (Dashboard → Site Settings → Installation) -->
+  <script>
+    (function (w, d) {
+      w.PushEngage = w.PushEngage || [];
+      w._peq = w._peq || [];
+      PushEngage.push(['init', { appId: 'YOUR_APP_ID' }]);
+      var e = d.createElement('script');
+      e.src = 'https://clientcdn.pushengage.com/sdks/pushengage-web-sdk.js';
+      e.async = true;
+      e.type = 'text/javascript';
+      d.head.appendChild(e);
+    })(window, document);
+  </script>
+
+  <style>
+    :root { --navy: #191A35; --blue: #3B43FF; --yellow: #FFD37D; }
+    * { box-sizing: border-box; margin: 0; }
+    body { font-family: system-ui, -apple-system, sans-serif; background: #fafaf7; color: var(--navy); min-height: 100vh; display: grid; place-items: center; padding: 24px; }
+    .card { background: #fff; border: 1px solid rgba(25,26,53,.12); border-radius: 20px; padding: 32px; max-width: 420px; width: 100%; box-shadow: 0 20px 50px rgba(25,26,53,.08); }
+    .badge { display: inline-block; background: rgba(255,211,125,.35); border: 1px solid rgba(255,211,125,.9); border-radius: 999px; font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; padding: 4px 12px; margin-bottom: 16px; }
+    h1 { font-size: 1.4rem; margin-bottom: 6px; }
+    .price { font-size: 1.1rem; font-weight: 700; color: var(--blue); margin-bottom: 18px; }
+    button { width: 100%; padding: 13px 18px; border: 0; border-radius: 12px; font-size: 1rem; font-weight: 700; cursor: pointer; margin-top: 10px; }
+    .primary { background: var(--blue); color: #fff; }
+    .ghost { background: #fff; color: var(--navy); border: 1px solid rgba(25,26,53,.2); }
+    .log { margin-top: 18px; font-size: .8rem; font-family: ui-monospace, Menlo, monospace; color: #556; background: #f2f2ee; border-radius: 10px; padding: 12px; min-height: 60px; white-space: pre-wrap; }
+  </style>
+</head>
+<body>
+  <main class="card">
+    <span class="badge">Demo store</span>
+    <h1>Aeron Chair</h1>
+    <p class="price">$1,041</p>
+
+    <button class="primary" id="subscribe">Enable notifications</button>
+    <button class="ghost" id="vip">Join VIP segment</button>
+    <button class="ghost" id="abandon">Add to cart, then leave (fires trigger)</button>
+
+    <div class="log" id="log">Ready. 1) Enable notifications  2) Fire a trigger  3) Manage campaigns from Claude via the PushEngage MCP.</div>
+  </main>
+
+  <script>
+    const log = (m) => { document.getElementById('log').textContent = m; };
+
+    // The SDK shows your dashboard-configured opt-in automatically.
+    // This button demonstrates requesting the prompt from code as well.
+    document.getElementById('subscribe').addEventListener('click', () => {
+      window._peq.push(['subscribe']);
+      log('Opt-in requested. Accept the browser prompt, then check Dashboard → Audience.');
+    });
+
+    document.getElementById('vip').addEventListener('click', () => {
+      window._peq.push(['add-to-segment', ['vip']]);
+      log("Added to segment 'vip'. From Claude (with the PushEngage MCP connected), try:\n\"Send a 10%-off push to the vip segment.\"");
+    });
+
+    document.getElementById('abandon').addEventListener('click', () => {
+      window._peq.push(['send-trigger-event', {
+        campaign: 'cart_abandoned',
+        data: { product: 'Aeron Chair', value: 1041 }
+      }]);
+      log("Trigger 'cart_abandoned' fired. Pair it with a Cart Abandonment campaign in the dashboard — or ask Claude to build one over MCP.");
+    });
+  </script>
+</body>
+</html>

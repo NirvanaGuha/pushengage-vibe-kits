@@ -1,0 +1,10 @@
+{
+  "name": "pushengage-vibe-kit-web",
+  "version": "1.0.0",
+  "description": "Demo store with PushEngage web push wired in — manage campaigns from Claude via the PushEngage MCP server.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "license": "MIT"
+}

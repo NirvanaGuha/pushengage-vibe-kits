@@ -1,0 +1,15 @@
+name: pushengage_demo_store
+description: PushEngage Vibe Kit — Flutter starter with app push wired in.
+publish_to: "none"
+version: 1.0.0
+
+environment:
+  sdk: ">=3.0.0 <4.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  pushengage_flutter_sdk: ^0.0.2
+
+flutter:
+  uses-material-design: true
